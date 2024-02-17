@@ -1,5 +1,7 @@
 # Data Structures - CPSC 350
 
+A repository to store all of my Data Structures (CPSC350) work, assignments, and projects.
+
 ## Assignments
 
 | Title | Description | Instructions | Submission |
