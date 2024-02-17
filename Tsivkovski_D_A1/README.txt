@@ -1,5 +1,4 @@
 Name: Daniel Tsivkovski
-ID: 2456881
 Email: tsivkovski@chapman.edu
 Course: CPSC350-03
 Assignment 1
