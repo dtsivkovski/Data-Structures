@@ -2,6 +2,11 @@
 
 A repository to store all of my Data Structures (CPSC350) work, assignments, and projects.
 
+## Structures
+
+| Title and Link | Description |
+| [Genstack](https://github.com/dtsivkovski/Data-Structures/tree/main/structures/genstack) | A **stack** implementation for characters |
+
 ## Assignments
 
 | Title | Description | Instructions | Submission |
