@@ -19,22 +19,36 @@ string Translator::translateEnglishWord(string word) {
         /* switch based on lowercase version of character
          determines whether it is a vowel or consonant*/
         switch(tolower(word[i])) {
-            case 'a':
-            case 'e':
-            case 'i':
-            case 'o':
-            case 'u':
-                /* BEGIN CODE BEING REFERENCED:
-                    https://www.geeksforgeeks.org/stdstringappend-in-c/
-                */
-                result.append(model->translateSingleVowel(word[i]));
+            // all consonants
+            case 'b':
+            case 'c':
+            case 'd':
+            case 'f':
+            case 'g':
+            case 'h':
+            case 'j':
+            case 'k':
+            case 'l':
+            case 'm':
+            case 'n':
+            case 'p':
+            case 'q':
+            case 'r':
+            case 's':
+            case 't':
+            case 'v':
+            case 'w':
+            case 'x':
+            case 'y':
+            case 'z':
+                // append the consonant translation
+                result += model->translateSingleConsonant(word[i]);
                 break;
-            // assume that anything not a vowel is a consonant for a regular english word
+            // assume that anything not a consonant is a vowel for a regular english word
+            // also helps with punctuation not accidentally duplicating
             default:
-                result.append(model->translateSingleConsonant(word[i]));
-                /* END CODE BEING REFERENCED:
-                    https://www.geeksforgeeks.org/stdstringappend-in-c/
-                */
+                result += model->translateSingleVowel(word[i]);
+                // append the vowel translation
                 break;
         }
     }
@@ -56,7 +70,7 @@ string Translator::translateEnglishSentence(string sentence) {
         if (sentence[i] == ' ') {
             // get word by getting word start position up to this point
             string word = sentence.substr(wordStartPos, i - wordStartPos);
-            result.append(translateEnglishWord(word)).append(" "); // translate it and append a space
+            result += translateEnglishWord(word) + " "; // translate and append a space
             wordStartPos = i + 1; // reset position to the one after the space char
         }
          /* make sure to translate the last word if there are any characters left after a space
@@ -64,7 +78,7 @@ string Translator::translateEnglishSentence(string sentence) {
          */
         else if (i == sentence.size() - 1) {
             string word = sentence.substr(wordStartPos, i);
-            result.append(translateEnglishWord(word));
+            result += translateEnglishWord(word);
         }
 
     }

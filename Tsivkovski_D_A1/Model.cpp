@@ -13,7 +13,7 @@ string Model::translateSingleConsonant(char consonant) {
     string result = "";
     result += consonant;
     result += 'o';
-    result += consonant;
+    result += tolower(consonant);
     return result;
 }
 

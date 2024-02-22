@@ -17,7 +17,10 @@ class FileProcessor {
         void processFile(string inputFile, string outputFile);
 
     private:
-        string htmlFormat(string english, string rovarspraket);
+        string htmlEnglishFormat(string english);
+        string htmlRovarspraketFormat(string rovarspraket);
+        string createHTMLHead();
+        string createHTMLEnding();
         Translator *translator;
 
 };

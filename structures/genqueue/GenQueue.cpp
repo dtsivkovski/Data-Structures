@@ -26,6 +26,23 @@ void GenQueue::insert(char data) {
     }
 
     myQueue[rear++] = data;
+    rear %= mSize;
+    numElements++;
+}
+
+
+void GenQueue::enqueue(char data) {
+    if (isFull()) {
+        throw runtime_error("Queue is full");
+    }
+
+    int i = numElements - 1;
+    while (i >= 0 && data < myQueue[i]) {
+        myQueue[i+1] = myQueue[i];
+        i--;
+    }
+
+    myQueue[rear++] = data;
     numElements++;
 }
 
@@ -36,6 +53,7 @@ char GenQueue::remove() {
 
     char c = '\0'; // null character
     c = myQueue[front++];
+    front %= mSize;
     numElements--;
     return c;
 }

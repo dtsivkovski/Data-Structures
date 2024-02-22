@@ -18,6 +18,7 @@ class GenQueue {
         // core functions
         void insert(char data); // enqueue
         char remove(); // dequeue
+        void enqueue(char data); // priority queue insert
 
         // aux functions
         char peek(); // front
