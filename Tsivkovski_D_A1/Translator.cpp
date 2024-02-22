@@ -1,12 +1,10 @@
 #include "Translator.h"
 
 Translator::Translator(){
-    cout << "Translator Constructor" << endl;
     model = new Model();
 }
 
 Translator::~Translator(){
-    cout << "Translator Destructor" << endl;
     delete model;
 }
 

@@ -1,12 +1,10 @@
 #include "FileProcessor.h"
 
 FileProcessor::FileProcessor() {
-    cout << "File Processor Constructed" << endl;
     translator = new Translator();
 }
 
 FileProcessor::~FileProcessor() {
-    cout << "File Processor Destructed" << endl;
     delete translator;
 }
 

@@ -1,11 +1,9 @@
 #include "Model.h"
 
 Model::Model(){
-    cout << "Model Constructor" << endl;
 }
 
 Model::~Model() {
-    cout << "Model Destructor" << endl;
 }
 
 string Model::translateSingleConsonant(char consonant) {
