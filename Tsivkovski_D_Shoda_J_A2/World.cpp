@@ -14,25 +14,30 @@ World::World(unsigned int L, unsigned int N, unsigned int coins, unsigned int no
         int koopaThreshold = goombaThreshold + koopas;
         int mushroomThreshold = koopaThreshold + mushrooms;
 
+
         // create a new char*** to hold L number of char** 
         world = new char**[L]();
         // iterate through number of levels
-        for (int i = 0; i < L; i++) {
+        for (int i = 0; i < L; ++i) {
             
             char** tempLevel = new char*[N]();
             // iterate through each line of the level
-            for (int j = 0; j < N; j++) {
+            for (int j = 0; j < N; ++j) {
                 
                 char* tempLine = new char[N]();
                 // iterate through each char in each line
-                for (int k = 0; k < N; k++) {
+                for (int k = 0; k < N; ++k) {
                     
+                    // generate a random number from 1 - 100
                     int val = rand() % 100 + 1;
-
-                    if (tempLine[k] == 'w' || tempLine[k] == 'b') {
-                        break;
-                    }
-                    else if (val >= 1 && val < coinsThreshold) {
+                    
+                    /*
+                        Ex: 
+                        - a number from 1 to coinsThreshold will be a 'c'
+                        - then, a number from coinsThreshold to nothingThreshold will be an 'x'
+                        - etc.
+                    */
+                    if (val >= 1 && val < coinsThreshold) {
                         tempLine[k] = 'c';
                     }
                     else if (val >= coinsThreshold && val < nothingThreshold) {
@@ -54,7 +59,40 @@ World::World(unsigned int L, unsigned int N, unsigned int coins, unsigned int no
                 
             }
 
-            world[i] = tempLevel;
+            // every level (except the last) should have a warp pipe
+            if (!(i == (L - 1))) {
+                // generate coordinates for warp pipe
+                int xrand = rand() % N;
+                int yrand = rand() % N;
+                
+                if (!(nothing == 0)) { // prevents infinite loop when no empty spaces
+                    while (tempLevel[xrand][yrand] != 'x') {
+                        // continue redoing until locating an empty space to put the warp pipe
+                        xrand = rand() % N;
+                        yrand = rand() % N;
+                    }
+                }
+                // set random location to warp pipe
+
+                tempLevel[xrand][yrand] = 'w';
+
+            }
+
+            // now generate a boss location for each level
+            int b_xrand = rand() % N;
+            int b_yrand = rand() % N;
+
+            if (!(nothing == 0)) { // prevents infinite loop when no empty spaces
+                while (tempLevel[b_xrand][b_yrand] != 'x') {
+                    // continue redoing until locating an empty space to put the boss
+                    b_xrand = rand() % N;
+                    b_yrand = rand() % N;
+                }
+            }
+            // place boss char
+            tempLevel[b_xrand][b_yrand] = 'b';
+
+            world[i] = tempLevel; // set 2d array to the level
 
         }
 
@@ -62,4 +100,22 @@ World::World(unsigned int L, unsigned int N, unsigned int coins, unsigned int no
         levelcounter = 0;
 
     }
+}
+
+World::~World() {
+    delete world;
+}
+
+void World::printLevel(int levelNumber) {
+    cout << "Level " << levelNumber  << endl;
+    int dimensions = sizeof(world[levelNumber][0]);
+    for (int i = 0; i < dimensions; ++i) {
+
+        for (int j = 0; j < dimensions; ++j) {
+            cout << world[levelNumber][i][j] << ' ';
+        }
+        cout << endl;
+
+    }
+    cout << endl;
 }

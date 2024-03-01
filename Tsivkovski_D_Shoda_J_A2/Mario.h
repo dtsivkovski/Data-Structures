@@ -1,6 +1,8 @@
 #ifndef MARIO_H
 #define MARIO_H
 
+#include "World.h"
+
 #include <iostream>
 using namespace std;
 

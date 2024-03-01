@@ -20,7 +20,7 @@ int Mario::getLives(){
 }
 
 int Mario::getPL(){
-    return powerLevel
+    return powerLevel;
 }
 
 void Mario::loseLife(){
@@ -31,6 +31,6 @@ void Mario::addLife(){
     lives++;
 }
 
-void losePL(){
+void Mario::losePL(){
     powerLevel--;
 }

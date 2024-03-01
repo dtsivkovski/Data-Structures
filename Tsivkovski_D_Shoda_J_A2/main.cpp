@@ -6,4 +6,6 @@ int main(int argc, char** argv) {
     for (int i = 0; i < 7; ++i) {
         world->printLevel(i);
     }
+
+    delete world;
 }
