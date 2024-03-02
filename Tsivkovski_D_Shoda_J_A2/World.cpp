@@ -17,6 +17,7 @@ World::World(unsigned int L, unsigned int N, unsigned int coins, unsigned int no
         int mushroomThreshold = koopaThreshold + mushrooms;
 
         dimensions = N;
+        numLevels = L;
 
 
         // create a new char*** to hold L number of char** 
@@ -121,6 +122,12 @@ void World::printLevel(int levelNumber) {
 
     }
     cout << endl;
+}
+
+void World::printWorld() {
+    for (int i = 0; i < numLevels; ++i) {
+        printLevel(i);
+    }
 }
 
 char** World::getLevel(int levelNumber) {

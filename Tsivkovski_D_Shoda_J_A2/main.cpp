@@ -1,14 +1,16 @@
 #include "World.h"
 #include "Enemy.h"
+#include "Game.h"
 
 int main(int argc, char** argv) {
     // TO DO: Read the input file, instantiate mario and world 
-    World *world = new World(7,10,10,75,5,5,5); // line for testing world creation
-    for (int i = 0; i < 7; ++i) {
-        world->printLevel(i);
-    }
+    // World *world = new World(7,10,10,75,5,5,5); // line for testing world creation
+    // world->printWorld();
+    // delete world;
 
-    delete world;
+    Game *game = new Game("infile.txt", "outfile.txt");
+    game->play();
+    delete game;
 
     Enemy *goomba = new Enemy("goomba");
     int counter = 0;

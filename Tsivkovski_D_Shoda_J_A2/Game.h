@@ -5,6 +5,8 @@
 #include "World.h"
 
 #include <iostream>
+#include <fstream>
+#include <string>
 using namespace std;
 
 class Game {
@@ -19,7 +21,6 @@ class Game {
         Mario *mario;
         string inFile;
         string outFile;
-
 
 };
 

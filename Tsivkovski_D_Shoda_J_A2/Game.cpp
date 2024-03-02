@@ -25,4 +25,35 @@ Game::~Game(){
 }
 
 void Game::play(){
+
+    // create ifstream for game parameters, open it
+    ifstream *gameInput = new ifstream;
+    gameInput->open(inFile);
+
+    if (gameInput->is_open()) {
+        
+        // create array to hold numerical arguments
+        int* args = new int[7];
+        string line = "";
+        cout << "in isopen" << endl;
+        // iterate through lines for arguments
+        for (int i = 0; i < 7; ++i) {
+            if (getline(*gameInput, line)) {
+                args[i] = stoi(line);
+            }
+        }
+
+        world = new World(args[0], 
+                            args[1], 
+                            args[2],
+                            args[3],
+                            args[4],
+                            args[5],
+                            args[6]);
+        world->printWorld();
+    }
+
+    delete gameInput;
+    
 }
+
