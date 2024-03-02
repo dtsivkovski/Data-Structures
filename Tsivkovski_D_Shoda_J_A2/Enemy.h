@@ -8,14 +8,15 @@ class Enemy{
 
     public:
 
-        Enemy();
+        Enemy(string enemyType);
         ~Enemy();
         
         bool fight();
 
     private:
-    
-}
-
+        string type;
+        int probability;
+        
+};
 
 #endif

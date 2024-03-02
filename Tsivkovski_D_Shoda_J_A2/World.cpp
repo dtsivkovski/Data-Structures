@@ -1,6 +1,8 @@
 #include "World.h"
 
 World::World(unsigned int L, unsigned int N, unsigned int coins, unsigned int nothing, unsigned int goombas, unsigned int koopas, unsigned int mushrooms) {
+    
+    srand(time(nullptr));
 
     if ((coins + nothing + goombas + koopas + mushrooms) != 100) {
         cerr << "Percentages do not add up to 100" << endl;
