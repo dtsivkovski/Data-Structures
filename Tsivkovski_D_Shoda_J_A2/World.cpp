@@ -42,16 +42,16 @@ World::World(unsigned int L, unsigned int N, unsigned int coins, unsigned int no
                         - then, a number from coinsThreshold to nothingThreshold will be an 'x'
                         - etc.
                     */
-                    if (val >= 1 && val < coinsThreshold) {
+                    if (val >= 1 && val <= coinsThreshold) {
                         tempLine[k] = 'c';
                     }
-                    else if (val >= coinsThreshold && val < nothingThreshold) {
+                    else if (val > coinsThreshold && val <= nothingThreshold) {
                         tempLine[k] = 'x';
                     }
-                    else if (val >= nothingThreshold && val < goombaThreshold) {
+                    else if (val > nothingThreshold && val <= goombaThreshold) {
                         tempLine[k] = 'g';
                     }
-                    else if (val >= goombaThreshold && val < koopaThreshold) {
+                    else if (val > goombaThreshold && val <= koopaThreshold) {
                         tempLine[k] = 'k';
                     }
                     else {
