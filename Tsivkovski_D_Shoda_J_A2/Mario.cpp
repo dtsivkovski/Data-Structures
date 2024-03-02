@@ -9,7 +9,9 @@ Mario::Mario(int mLives){
 
 Mario::~Mario(){};
 
-
+int Mario::move() {
+    
+}
 
 void Mario::interact(){
     

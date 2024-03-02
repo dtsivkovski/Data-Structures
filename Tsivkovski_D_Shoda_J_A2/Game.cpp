@@ -33,10 +33,10 @@ void Game::play(){
     if (gameInput->is_open()) {
         
         // create array to hold numerical arguments
-        int* args = new int[7];
+        int* args = new int[8];
         string line = "";
         // iterate through lines for arguments
-        for (int i = 0; i < 7; ++i) {
+        for (int i = 0; i < 8; ++i) {
             if (getline(*gameInput, line)) {
                 args[i] = stoi(line);
             }
@@ -44,12 +44,14 @@ void Game::play(){
 
         world = new World(args[0], 
                             args[1], 
-                            args[2],
                             args[3],
                             args[4],
                             args[5],
-                            args[6]);
+                            args[6],
+                            args[7]);
         world->printWorld();
+
+        // TO DO: Initialize Mario with lives (V) of args[2]
     }
 
     delete gameInput;
