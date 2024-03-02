@@ -14,6 +14,8 @@ World::World(unsigned int L, unsigned int N, unsigned int coins, unsigned int no
         int koopaThreshold = goombaThreshold + koopas;
         int mushroomThreshold = koopaThreshold + mushrooms;
 
+        dimensions = N;
+
 
         // create a new char*** to hold L number of char** 
         world = new char**[L]();
@@ -108,7 +110,6 @@ World::~World() {
 
 void World::printLevel(int levelNumber) {
     cout << "Level " << levelNumber  << endl;
-    int dimensions = sizeof(world[levelNumber][0]);
     for (int i = 0; i < dimensions; ++i) {
 
         for (int j = 0; j < dimensions; ++j) {
@@ -118,4 +119,16 @@ void World::printLevel(int levelNumber) {
 
     }
     cout << endl;
+}
+
+char** World::getLevel(int levelNumber) {
+    return world[levelNumber];
+}
+
+int World::getLevelNum() {
+    return levelcounter;
+}
+
+void World::incrementLevelNum() {
+    levelcounter++;
 }

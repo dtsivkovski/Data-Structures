@@ -15,6 +15,7 @@ class World {
         void incrementLevelNum();
 
     private:
+        int dimensions;
         char*** world;
         int levelcounter;
         char** makeLevel();
