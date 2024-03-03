@@ -21,6 +21,9 @@ class Game {
         Mario *mario;
         string inFile;
         string outFile;
+        string createLineOutput();
+        int powerLevel;
+        int nextDirection;
 
 };
 

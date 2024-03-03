@@ -42,6 +42,7 @@ void Game::play(){
             }
         }
 
+
         world = new World(args[0], 
                             args[1], 
                             args[3],
@@ -52,9 +53,62 @@ void Game::play(){
         world->printWorld();
 
         // TO DO: Initialize Mario with lives (V) of args[2]
+        mario = new Mario(args[2], *world);
     }
 
     delete gameInput;
+
+    ofstream *gameOutput = new ofstream;
+    gameOutput->open(outFile);
+
+    if (gameOutput->is_open()) {
+
+        
+        while (!(mario->hasLost() + mario->hasWon())) {
+            nextDirection = rand() % 5 + 1; // get next direction of movement
+            powerLevel = mario->getPL();
+            mario->move(nextDirection);
+            *gameOutput << createLineOutput();
+        }
+        
+    }
+
+    delete gameOutput;
     
 }
 
+string Game::createLineOutput() {
+    string result = "LVL: ";
+    result += to_string(world->getLevelNum()) + " | "; // appends level num
+    result += "(" + to_string(mario->getPosX()) + "," + to_string(mario->getPosY()) + ") | ";
+    result += "PL: " + to_string(powerLevel) + " | ";
+    result += mario->getLastInteraction() + " | ";
+    result += "Lives: " + to_string(mario->getLives()) + " | ";
+    result += "Coins: " + to_string(mario->getCoins()) + " | ";
+
+    // append next direction
+    string directionWord = "";
+    switch(nextDirection) {
+        case '1':
+            "UP";
+            break;
+        case '2':
+            "DOWN";
+            break;
+        case '3':
+            "LEFT";
+            break;
+        case '4':
+            "RIGHT";
+            break;
+        default:
+            "STAY PUT";
+            break;
+    }
+    result += "Direction: " + directionWord;
+    
+    return result;
+    
+
+
+}

@@ -130,8 +130,8 @@ void World::printWorld() {
     }
 }
 
-char** World::getLevel(int levelNumber) {
-    return world[levelNumber];
+char** World::getLevel() {
+    return world[levelcounter];
 }
 
 int World::getLevelNum() {
@@ -140,4 +140,25 @@ int World::getLevelNum() {
 
 void World::incrementLevelNum() {
     levelcounter++;
+}
+
+char World::checkNextLevelPos(int xPos, int yPos) {
+    if (levelcounter == (numLevels - 1)) {
+        return '\0';
+    }
+    else {
+        return world[levelcounter + 1][xPos][yPos];
+    }
+}
+
+int World::getDimensions() {
+    return dimensions;
+}
+
+void World::updateCharAt(int levelNumber, int xPos, int yPos, char c) {
+    world[levelNumber][xPos][yPos] = c;
+}
+
+bool World::isFinalLevel() {
+    return (levelcounter == (numLevels - 1));
 }

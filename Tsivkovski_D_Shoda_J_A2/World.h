@@ -15,11 +15,15 @@ class World {
                 unsigned int koopas,
                 unsigned int mushrooms);
         ~World();
-        char** getLevel(int levelNumber);
+        char** getLevel();
+        char checkNextLevelPos(int xPos, int yPos);
         void printLevel(int levelNumber);
         void printWorld();
         int getLevelNum();
         void incrementLevelNum();
+        int getDimensions();
+        void updateCharAt(int levelNumber, int xPos, int yPos, char c);
+        bool isFinalLevel();
 
     private:
         int dimensions;
