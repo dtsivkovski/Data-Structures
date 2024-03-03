@@ -1,6 +1,7 @@
 #include "Game.h"
 
 Game::Game(string inputFile, string outputFile){
+    srand(time(nullptr));
     /*
     Line # 1 is the number of levels, L (a positive integer)
     Line # 2 is the dimension of the grid, N (a positive integer)
@@ -50,7 +51,6 @@ void Game::play(){
                             args[5],
                             args[6],
                             args[7]);
-        world->printWorld();
 
         // TO DO: Initialize Mario with lives (V) of args[2]
         mario = new Mario(args[2], *world);
@@ -63,8 +63,11 @@ void Game::play(){
 
     if (gameOutput->is_open()) {
 
+        // first print all of the levels
+        *gameOutput << world->worldtoString();
+
         
-        while (!(mario->hasLost() + mario->hasWon())) {
+        while (!(mario->hasLost()) && !(mario->hasWon())) {
             nextDirection = rand() % 5 + 1; // get next direction of movement
             powerLevel = mario->getPL();
             mario->move(nextDirection);
@@ -105,7 +108,7 @@ string Game::createLineOutput() {
             "STAY PUT";
             break;
     }
-    result += "Direction: " + directionWord;
+    result += "Direction: " + directionWord + "\n";
     
     return result;
     

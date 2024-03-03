@@ -1,7 +1,8 @@
 #include "WarpPipe.h"
 
-WarpPipe::WarpPipe(World &worldRef){
+WarpPipe::WarpPipe(World &worldRef, Mario &marioPlayer){
     world = &worldRef;
+    mario = &marioPlayer;
     srand(time(nullptr)); // random seed
 }
 
@@ -22,5 +23,8 @@ void WarpPipe::warp() {
 
     world->incrementLevelNum(); // increment level number
     world->updateCharAt(world->getLevelNum(), placementX, placementY, 'H'); // place mario there
+
+    mario->setPosX(placementX);
+    mario->setPosY(placementY);
 
 }

@@ -9,6 +9,8 @@ Mario::Mario(int mLives, World &worldLevel){
     srand(time(nullptr)); // random seed
     world = &worldLevel;
     dimensions = world->getDimensions();
+    lost = false;
+    won = false;
 
     createMario();
 
@@ -85,17 +87,23 @@ void Mario::interact(int nextPosX, int nextPosY) {
             addCoin();
             world->updateCharAt(levelNumber, posX, posY, 'x'); // reset old space to nothing
             world->updateCharAt(levelNumber, nextPosX, nextPosY, 'H'); // reset new space to hero
+            posX = nextPosX;
+            posY = nextPosY;
             lastInteraction = "Mario collected a coin";
             break;
         case 'm':
             addPL();
             world->updateCharAt(levelNumber, posX, posY, 'x'); // reset old space to nothing
             world->updateCharAt(levelNumber, nextPosX, nextPosY, 'H'); // reset new space to hero
+            posX = nextPosX;
+            posY = nextPosY;
             lastInteraction = "Mario ate a mushroom";
             break;
         case 'x':
             world->updateCharAt(levelNumber, posX, posY, 'x'); // reset old space to nothing
             world->updateCharAt(levelNumber, nextPosX, nextPosY, 'H'); // reset new space to hero
+            posX = nextPosX;
+            posY = nextPosY;
             lastInteraction = "The position is empty";
             break;
         case 'g':
@@ -103,6 +111,8 @@ void Mario::interact(int nextPosX, int nextPosY) {
             if (goomba->fight()) {
                 world->updateCharAt(levelNumber, posX, posY, 'x'); // reset old space to nothing
                 world->updateCharAt(levelNumber, nextPosX, nextPosY, 'H'); // reset new space to hero
+                posX = nextPosX;
+                posY = nextPosY;
                 enemyStreak++;
                 lastInteraction = "Mario fought a goomba and won";
             }
@@ -119,6 +129,8 @@ void Mario::interact(int nextPosX, int nextPosY) {
             if (koopa->fight()) {
                 world->updateCharAt(levelNumber, posX, posY, 'x'); // reset old space to nothing
                 world->updateCharAt(levelNumber, nextPosX, nextPosY, 'H'); // reset new space to hero
+                posX = nextPosX;
+                posY = nextPosY;
                 enemyStreak++;
                 lastInteraction = "Mario fought a koopa and won";
             }
@@ -135,6 +147,8 @@ void Mario::interact(int nextPosX, int nextPosY) {
             if (boss->fight()) {
                 world->updateCharAt(levelNumber, posX, posY, 'x'); // reset old space to nothing
                 world->updateCharAt(levelNumber, nextPosX, nextPosY, 'x'); // reset new space to nothing
+                posX = nextPosX;
+                posY = nextPosY;
                 enemyStreak++;
                 lastInteraction = "Mario fought the level boss and won";
                 // win condition if mario beats boss at the last level
@@ -142,7 +156,7 @@ void Mario::interact(int nextPosX, int nextPosY) {
                     won = true;
                 }
                 else { // move mario to next level (use warppipe method) if not the last level
-                    wp = new WarpPipe(*world);
+                    wp = new WarpPipe(*world, *this);
                     wp->warp();
                     delete wp;
                     wp = nullptr;
@@ -156,7 +170,7 @@ void Mario::interact(int nextPosX, int nextPosY) {
             boss = nullptr;
             break;
         case 'w':
-            wp = new WarpPipe(*world);
+            wp = new WarpPipe(*world, *this);
             world->updateCharAt(levelNumber, posX, posY, 'x'); // reset old space to nothing
             wp->warp(); // warp mario to next level
             lastInteraction = "Mario warped";
@@ -181,7 +195,7 @@ int Mario::addPL(){
 
 void Mario::loseLife(){
     if(lives == 0){
-        hasLost();
+        lost = true;
     }
     else{
         lives--;
@@ -230,6 +244,14 @@ int Mario::getPosX() {
 
 int Mario::getPosY() {
     return posY;
+}
+
+void Mario::setPosX(int positionX) {
+    posX = positionX;
+}
+
+void Mario::setPosY(int positionY) {
+    posY = positionY;
 }
 
 string Mario::getLastInteraction() {

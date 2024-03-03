@@ -19,6 +19,7 @@ class World {
         char checkNextLevelPos(int xPos, int yPos);
         void printLevel(int levelNumber);
         void printWorld();
+        string worldtoString();
         int getLevelNum();
         void incrementLevelNum();
         int getDimensions();

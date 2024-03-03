@@ -26,6 +26,8 @@ class Mario{
         void losePL();
         int getPosX();
         int getPosY();
+        void setPosX(int positionX);
+        void setPosY(int positionY);
         string getLastInteraction();
 
     private:

@@ -162,3 +162,17 @@ void World::updateCharAt(int levelNumber, int xPos, int yPos, char c) {
 bool World::isFinalLevel() {
     return (levelcounter == (numLevels - 1));
 }
+
+string World::worldtoString() {
+    string result = "";
+    for (int i = 0; i < numLevels; ++i) {
+        for (int j = 0; j < dimensions; ++j) {
+            for (int k = 0; k < dimensions; ++k) {
+                result += world[i][j][k];
+            }
+            result += "\n"; // comment this out if you want the entire 2d array as 1 dimensional string
+        }
+        result += "\n";
+    }
+    return result;
+}
