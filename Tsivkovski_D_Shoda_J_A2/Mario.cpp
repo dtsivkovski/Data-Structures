@@ -11,6 +11,7 @@ Mario::Mario(int mLives, World &worldLevel){
     dimensions = world->getDimensions();
     lost = false;
     won = false;
+    totalMoves = 0;
 
     createMario();
 
@@ -37,6 +38,8 @@ void Mario::createMario() {
 }
 
 void Mario::move(int direction) {
+    totalMoves++; // increment move counter for final total
+
     if(direction == 1){ // up
         if(posY + 1 >= dimensions){ // if higher than boundary
             interact(posX, 0);
@@ -260,4 +263,8 @@ string Mario::getLastInteraction() {
 
 int Mario::getCoins(){
     return coins;
+}
+
+int Mario::getTotalMoves() {
+    return totalMoves;
 }

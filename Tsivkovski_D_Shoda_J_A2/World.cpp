@@ -176,3 +176,15 @@ string World::worldtoString() {
     }
     return result;
 }
+
+string World::currLeveltoString() {
+    string result = "";
+    
+        for (int j = 0; j < dimensions; ++j) {
+            for (int k = 0; k < dimensions; ++k) {
+                result += world[levelcounter][j][k];
+            }
+        }
+        result += "\n";
+    return result;
+}

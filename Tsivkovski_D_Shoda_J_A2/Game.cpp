@@ -68,10 +68,17 @@ void Game::play(){
 
         
         while (!(mario->hasLost()) && !(mario->hasWon())) {
-            nextDirection = rand() % 5 + 1; // get next direction of movement
+            nextDirection = rand() % 4 + 1; // get next direction of movement
             powerLevel = mario->getPL();
             mario->move(nextDirection);
-            *gameOutput << createLineOutput();
+            *gameOutput << createLineOutput() << world->currLeveltoString();
+        }
+
+        if (mario->hasWon()) {
+            *gameOutput << "Mario won in " << mario->getTotalMoves() << " moves";
+        }
+        else {
+            *gameOutput << "Mario lost in " << mario->getTotalMoves() << " moves";
         }
         
     }
@@ -92,20 +99,20 @@ string Game::createLineOutput() {
     // append next direction
     string directionWord = "";
     switch(nextDirection) {
-        case '1':
-            "UP";
+        case 1:
+            directionWord = "UP";
             break;
-        case '2':
-            "DOWN";
+        case 2:
+            directionWord = "DOWN";
             break;
-        case '3':
-            "LEFT";
+        case 3:
+            directionWord = "LEFT";
             break;
-        case '4':
-            "RIGHT";
+        case 4:
+            directionWord = "RIGHT";
             break;
         default:
-            "STAY PUT";
+            directionWord = "STAY PUT";
             break;
     }
     result += "Direction: " + directionWord + "\n";

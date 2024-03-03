@@ -20,6 +20,7 @@ class World {
         void printLevel(int levelNumber);
         void printWorld();
         string worldtoString();
+        string currLeveltoString();
         int getLevelNum();
         void incrementLevelNum();
         int getDimensions();

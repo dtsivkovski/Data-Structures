@@ -29,6 +29,7 @@ class Mario{
         void setPosX(int positionX);
         void setPosY(int positionY);
         string getLastInteraction();
+        int getTotalMoves();
 
     private:
         void interact(int posX, int posY);
@@ -42,6 +43,7 @@ class Mario{
         int posX;
         int posY;
         int dimensions;
+        int totalMoves;
         bool won;
         bool lost;
         void createMario();
