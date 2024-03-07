@@ -18,7 +18,7 @@ class GenStack{
         // core functions
         void push(int data);
         int pop();
-        // char peek(); // aka top
+        int peek(); // aka top
 
         // aux/helper functions
         bool isEmpty();

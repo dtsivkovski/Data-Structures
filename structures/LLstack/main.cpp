@@ -13,8 +13,10 @@ int main(int argc, char **argv) {
         myStack->push(30);
 
         cout << "SIZE: " << myStack->getSize() << endl;
+        cout << "PEEK: " << myStack->peek() << endl;
         cout << "POP: " << myStack->pop() << endl;
         cout << "SIZE: " << myStack->getSize() << endl;
+        cout << "PEEK: " << myStack->peek() << endl;
 
         while (!myStack->isEmpty()) {
             cout << "POP: " << myStack->pop() << endl;

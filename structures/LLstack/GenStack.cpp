@@ -11,7 +11,7 @@ GenStack::~GenStack() {
 }
 
 void GenStack::push(int data){
-    ll->insertBack(data);
+    ll->insertFront(data);
 }
 
 int GenStack::pop(){
@@ -23,6 +23,9 @@ int GenStack::pop(){
     return ll->removeFront();
 }
 
+int GenStack::peek() {
+    return ll->getFront();
+}
 
 bool GenStack::isEmpty() {
     return (ll->isEmpty());

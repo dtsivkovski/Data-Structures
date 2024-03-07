@@ -17,6 +17,7 @@ class LinkedList {
         int removeFront();
         int removeBack();
         int find(int value);
+        int getFront();
         int removeNode(int value);
         // aux
         bool isEmpty();

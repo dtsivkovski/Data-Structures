@@ -130,11 +130,15 @@ int LinkedList::removeNode(int value) {
         if (curr == NULL) return -1;
     }
     // if we get here, then curr should be at the position of the node to be deleted
-    if (curr == front) {
+    if (size == 1) {
+        front = NULL;
+        back = NULL;
+    }
+    else if (curr == front) {
         front = curr->next;
         front->prev = NULL;
     }
-    if (curr == back) {
+    else if (curr == back) {
         back = curr->prev;
         back->next = NULL;
     }
@@ -161,4 +165,6 @@ bool LinkedList::isEmpty() {
     return (size == 0);
 }
 
-
+int LinkedList::getFront() {
+    return front->data;
+}
