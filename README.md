@@ -5,6 +5,7 @@ A repository to store all of my Data Structures (CPSC350) work, assignments, and
 ## Structures
 
 | Title and Link | Description |
+| ----- | ----- |
 | [GenStack](https://github.com/dtsivkovski/Data-Structures/tree/main/structures/genstack) | A **stack** implementation for characters |
 | [GenQueue](https://github.com/dtsivkovski/Data-Structures/tree/main/structures/genqueue) | A **queue** implementation for characters |
 
