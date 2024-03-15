@@ -12,9 +12,6 @@ Mario::Mario(int mLives, World &worldLevel){
     lost = false;
     won = false;
     totalMoves = 0;
-
-    createMario();
-
 }
 
 Mario::~Mario(){};
@@ -173,6 +170,7 @@ void Mario::interact(int nextPosX, int nextPosY) {
             boss = nullptr;
             break;
         case 'w':
+            // warp pipe interaction, requires world to be passed in to wp
             wp = new WarpPipe(*world, *this);
             world->updateCharAt(levelNumber, posX, posY, 'x'); // reset old space to nothing
             wp->warp(); // warp mario to next level
@@ -191,14 +189,14 @@ int Mario::getLives(){
 
 int Mario::addPL(){
     if(powerLevel < 2){
-        powerLevel++;
+        powerLevel++; // gains PL
     }
     return powerLevel;
 }
 
 void Mario::loseLife(){
     if(lives == 0){
-        lost = true;
+        lost = true; // lose condition
     }
     else{
         lives--;
@@ -215,7 +213,7 @@ void Mario::losePL(){
         powerLevel--;
     }
     else{
-        loseLife();
+        loseLife(); // loses life if no PL left to lose
     }
 }
 
@@ -224,6 +222,7 @@ int Mario::getPL() {
 }
 
 void Mario::addCoin(){
+    // adds a life if 20 coins collected
     if(coins == 20){
         addLife();
         coins = 0;

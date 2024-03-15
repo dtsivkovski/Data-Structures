@@ -4,34 +4,15 @@
 #include "Mario.h"
 
 int main(int argc, char** argv) {
-    // TO DO: Read the input file, instantiate mario and world 
-    // World *world = new World(7,10,10,75,5,5,5); // line for testing world creation
-    // world->printWorld();
-    // delete world;
 
-    Game *game = new Game("infile.txt", "outfile.txt");
+    // gets the two files from the command line
+    if (argc < 3) {
+        return -1;
+    }
+
+    // reads in the two files
+    Game *game = new Game(argv[1], argv[2]);
     game->play();
     delete game;
-
-    // Enemy *goomba = new Enemy("goomba");
-    // int counter = 0;
-    // for (int i = 0; i < 100000; ++i) {
-    //     if (goomba->fight()) {
-    //         counter++;
-    //     }
-    // }
-    // cout << counter << endl;
-    // delete goomba;
-
-    // Enemy *koopa = new Enemy("koopa");
-    // counter = 0;
-    // for (int i = 0; i < 100000; ++i) {
-    //     if (koopa->fight()) {
-    //         counter++;
-    //     }
-    // }
-    // cout << counter << endl;
-    // delete koopa;
-
     
 }

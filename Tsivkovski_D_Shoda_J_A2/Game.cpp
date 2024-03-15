@@ -66,6 +66,13 @@ void Game::play(){
         // first print all of the levels
         *gameOutput << world->worldtoString();
 
+        // then initialize mario into the first level
+        mario->createMario();
+        // print where mario is at the start
+        *gameOutput << "Mario begins at (" << mario->getPosX() << "," << mario->getPosY() << ")\n";
+        // print the first level with mario in it
+        *gameOutput << world->currLeveltoString();
+
         
         while (!(mario->hasLost()) && !(mario->hasWon())) {
             nextDirection = rand() % 4 + 1; // get next direction of movement
@@ -100,16 +107,16 @@ string Game::createLineOutput() {
     string directionWord = "";
     switch(nextDirection) {
         case 1:
-            directionWord = "UP";
+            directionWord = "RIGHT";
             break;
         case 2:
-            directionWord = "DOWN";
-            break;
-        case 3:
             directionWord = "LEFT";
             break;
+        case 3:
+            directionWord = "UP";
+            break;
         case 4:
-            directionWord = "RIGHT";
+            directionWord = "DOWN";
             break;
         default:
             directionWord = "STAY PUT";

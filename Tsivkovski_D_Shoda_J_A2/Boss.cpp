@@ -18,6 +18,7 @@ bool Boss::fight(){
         return false; // mario loses the fight
     }
     else {
+        // mario loses power level but has the chance to fight agian
         mario->losePL();
         mario->losePL();
         return fight(); // recursive call to fight again

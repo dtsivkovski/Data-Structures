@@ -112,9 +112,10 @@ World::~World() {
 }
 
 void World::printLevel(int levelNumber) {
+    // iterates through the entire level
     cout << "Level " << levelNumber  << endl;
     for (int i = 0; i < dimensions; ++i) {
-
+        
         for (int j = 0; j < dimensions; ++j) {
             cout << world[levelNumber][i][j] << ' ';
         }
@@ -164,11 +165,13 @@ bool World::isFinalLevel() {
 }
 
 string World::worldtoString() {
+    // prints every level
     string result = "";
     for (int i = 0; i < numLevels; ++i) {
         for (int j = 0; j < dimensions; ++j) {
             for (int k = 0; k < dimensions; ++k) {
                 result += world[i][j][k];
+                result += ' ';
             }
             result += "\n"; // comment this out if you want the entire 2d array as 1 dimensional string
         }
@@ -179,11 +182,14 @@ string World::worldtoString() {
 
 string World::currLeveltoString() {
     string result = "";
-    
+
+        // prints entire level with padding
         for (int j = 0; j < dimensions; ++j) {
             for (int k = 0; k < dimensions; ++k) {
                 result += world[levelcounter][j][k];
+                result += ' '; // padding between chars
             }
+            result += "\n";
         }
         result += "\n";
     return result;

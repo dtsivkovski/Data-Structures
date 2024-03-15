@@ -30,6 +30,7 @@ class Mario{
         void setPosY(int positionY);
         string getLastInteraction();
         int getTotalMoves();
+        void createMario();
 
     private:
         void interact(int posX, int posY);
@@ -46,7 +47,6 @@ class Mario{
         int totalMoves;
         bool won;
         bool lost;
-        void createMario();
         
 };
 
