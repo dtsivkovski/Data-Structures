@@ -34,6 +34,6 @@ class Monostack{
 
 };
 
-#include "Monostack.cpp"
+#include "MonostackImplementation.h"
 
 #endif
