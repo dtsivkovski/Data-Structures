@@ -25,7 +25,7 @@ class Monostack{
         bool isEmpty();
         bool isFull();
         int getSize();
-
+        
     private:
         T *myArray; // pointer to the array
         int top; 
@@ -34,6 +34,6 @@ class Monostack{
 
 };
 
-#include "MonostackImplementation.h"
+#include "Monostack.tpp"
 
 #endif
