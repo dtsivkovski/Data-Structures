@@ -37,8 +37,9 @@ void Monostack<T>::push(T data){
         myArray = temp;
     }
 
-    if (mSize == 0) { // push immediately if size is 0
+    if (isEmpty()) {
         myArray[++top] = data;
+        return;
     }
     else if (direction == 'i') {
         // continue until empty
