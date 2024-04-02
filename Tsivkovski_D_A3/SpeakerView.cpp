@@ -87,10 +87,16 @@ void SpeakerView::checkVisibility() {
 }
 
 void SpeakerView::printVisible(int colNumber) {
-    string str = "Column " + to_string(colNumber) + " | " + to_string(stack->getSize()) + " people can see the speaker. | Heights: ";
+    string str = "In column " + to_string(colNumber) + " there are " + to_string(stack->getSize()) + " people that can see. Their heights are: ";
 
     while (!stack->isEmpty()) {
-        str += to_string(stack->pop()) + ", ";
+        str += to_string(stack->pop());
+        if (stack->getSize() > 0) {
+            str += ", ";
+        }
+        else {
+            str += " inches.";
+        }
     }
 
     cout << str << endl;

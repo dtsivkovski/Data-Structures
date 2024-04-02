@@ -9,7 +9,7 @@
 using namespace std;
 
 // define the class
-template <typename T>
+template <class T>
 class Monostack{
     public:
         Monostack(); // constructor

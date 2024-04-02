@@ -1,4 +1,4 @@
-template <typename T>
+template <class T>
 Monostack<T>::Monostack(){
     mSize = 64; // default stack size
     top = -1;
@@ -6,7 +6,7 @@ Monostack<T>::Monostack(){
     direction = 'i';
 }
 
-template <typename T>
+template <class T>
 Monostack<T>::Monostack(int maxSize, char monotonicDirection){
     mSize = maxSize; // custom max stack size
     top = -1;
@@ -14,12 +14,12 @@ Monostack<T>::Monostack(int maxSize, char monotonicDirection){
     direction = monotonicDirection;
 }
 
-template <typename T>
+template <class T>
 Monostack<T>::~Monostack() {
     delete[] myArray;
 }
 
-template <typename T>
+template <class T>
 void Monostack<T>::push(T data){
     // resize if stack is full
     if (isFull()) {
@@ -62,7 +62,7 @@ void Monostack<T>::push(T data){
     }
 }
 
-template <typename T>
+template <class T>
 T Monostack<T>::pop(){
     if (isEmpty()) {
         throw runtime_error("Stack is empty, nothing to pop");
@@ -71,7 +71,7 @@ T Monostack<T>::pop(){
     return myArray[top--];
 }
 
-template <typename T>
+template <class T>
 T Monostack<T>::peek(){
     if (isEmpty()) {
         throw runtime_error("Stack is empty, nothing to peek");
@@ -80,17 +80,17 @@ T Monostack<T>::peek(){
     return myArray[top];
 }
 
-template <typename T>
+template <class T>
 bool Monostack<T>::isFull() {
     return (top == mSize -1);
 }
 
-template <typename T>
+template <class T>
 bool Monostack<T>::isEmpty() {
     return (top == -1);
 }
 
-template <typename T>
+template <class T>
 int Monostack<T>::getSize() {
     return top + 1;
 }
