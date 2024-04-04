@@ -14,7 +14,7 @@ void SpeakerView::checkVisibility() {
     ifstream *inFile = new ifstream();
     inFile->open(fileName);
 
-    // check if file is open, then perform operations
+    // check if file is open
     if (inFile->is_open()) {
 
         // get each line of the file
@@ -45,7 +45,6 @@ void SpeakerView::checkVisibility() {
             ++rows;
 
         }
-        cout << cols << endl;
 
         // allocate 2d array based on num of cols adn rows
         grid = new double*[rows];
@@ -53,17 +52,20 @@ void SpeakerView::checkVisibility() {
             grid[i] = new double[cols];
         }
 
-        // reset the file stream to beginning
+        /*
+            reset file stream to beginning
+            reference: https://en.cppreference.com/w/cpp/io/basic_istream/seekg
+        */
         inFile->clear();
-        inFile->seekg(0, ios::beg);
+        inFile->seekg(0);
 
-        // read the data per row
+        // read the data for each row
         int currentRow = 0;
         while (getline(*inFile, line)) {
             getFromLine(line, currentRow++); // uses method to read line's data
         }
 
-        // push each value into stack by columms
+        // push each value into stack by cols
         for (int col = 0; col < cols; ++col) {
             for (int row = rows - 1; row >= 0; --row) {
                 stack->push(grid[row][col]); // push everything in column

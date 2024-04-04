@@ -234,13 +234,44 @@ bool BST<T>::deleteNode(T k) {
     //! TWO CHILDREN CASE:
     else {
         TreeNode<T> *successor = getSuccessor(current);
+
+        if (current == root) {
+            root = successor;
+        }
+        else if (isLeft) {
+            parent->left = successor;
+        }
+        else {
+            parent->right = successor;
+        }
+        successor->left = current->left;
+        current->left = NULL;
+        current->right = NULL;
     }
+    delete current;
+    return true;
 
 }
 
 template <class T>
 TreeNode<T>* BST<T>::getSuccessor(TreeNode<T> *d) {
-    
+    TreeNode<T> *sp = d;
+    TreeNode<T> *successor = d;
+    TreeNode<T> *current = d->right;
+
+    // get variables in the right spot
+    while (current != NULL) {
+        sp = successor;
+        successor = current;
+        current = current->left;
+    }
+
+    // we found the successor, now check if successor is a descendant of the right child
+    if (successor != d->right) {
+        sp->left = successor->right;
+        successor->right = d->right;
+    }
+    return successor;
 }
 
 #endif
